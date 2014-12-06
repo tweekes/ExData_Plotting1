@@ -1,3 +1,7 @@
+#
+# plot4.R - Generates file plot4.png.
+#
+
 
 # source the loadData.R script to populate the requisite data into variable epcData
 # (epc means Electric Power Consumption)

@@ -1,10 +1,12 @@
 #
+# loadData.R  
+#
 # Loads the "Individual household electric power consumption Data Set” into variable
 # epcData variable to be used by plot scripts 1 to 4. 
 #
 
 #
-# Check if the epcData variable does not exist and if so load the data.
+# Check if the epcData variable does not exist and if not then load the data.
 #
 
 if (!exists(x="epcData")) {
@@ -18,7 +20,8 @@ if (!exists(x="epcData")) {
     unzip(zipFileName) 
   }
   
-  # Load the file into memory and create a native datetime column for filtering.
+  # Load the file into memory and create a native datetime column from orginal columns Date and Time.
+  # Once the full file is in memory then filter down to the the data for the two required days. 
   
   data <- read.table(dataFileName, sep = ";", header = TRUE, na.strings="?")
   data$dateTime <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
